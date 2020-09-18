@@ -1,0 +1,40 @@
+ta404:
+  modules:
+    cache:
+      redis:
+        #失效时间(秒)
+        expire: 0
+        lettuce:
+          pool:
+            #连接池的最大数据库连接数，默认 8
+            maxTotal: 100
+            #最大空闲连接数，默认 8
+            maxIdle: 20
+            #最小空闲连接数，默认 0
+            minIdle: 10
+            #连接耗尽时是否阻塞, false报异常,ture阻塞直到超时, 默认true
+            blockWhenExhausted: true
+            #最大建立连接等待时间
+            maxWaitMillis: 3000
+            #是否在从池中取出连接实例前进行检验,如果检验失败,则从池中去除连接并尝试取出另一个
+            testOnBorrow: false
+            #是否在return连接实例给pool前进行检验
+            testOnReturn: false
+            #在空闲时检查有效性, 校验失败会从pool中drop掉 默认false（这一项只有在timeBetweenEvictionRunsMillis大于0时才有意义）
+            testWhileIdle: true
+            #逐出连接的最小空闲时间 默认1800000毫秒(30分钟) ；（这一项只有在timeBetweenEvictionRunsMillis大于0时才有意义）
+            minEvictableIdleTimeMillis: 60000
+            #逐出扫描的时间间隔(毫秒) 如果为负数,则不运行逐出线程, 默认-1
+            timeBetweenEvictionRunsMillis: 30000
+            #每次逐出检查时 逐出的最大数目 如果为负数就是 : 1/abs(n), 默认3
+            numTestsPerEvictionRun: -1
+        cluster:
+          #连接池最大连接数
+          max-redirects: 5
+          #集群节点(redis模式仅支持集群模式)
+          cluster-nodes[0]: 127.0.0.1:6379 #master
+          cluster-nodes[1]: 127.0.0.1:6380 #master
+          cluster-nodes[2]: 127.0.0.1:6381 #slave
+          cluster-nodes[3]: 127.0.0.1:6382 #slave
+          cluster-nodes[4]: 127.0.0.1:6383 #slave
+          cluster-nodes[5]: 127.0.0.1:6384 #slave

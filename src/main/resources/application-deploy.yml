@@ -1,0 +1,49 @@
+ta404:
+  inter-error-msg: 出现了点小意外,请稍后再试或联系管理员!  # 框架对服务器内部异常和未知错误的统一信息处理
+  limit:
+    enable: true
+    repeat-expire-time: 1
+  log:
+    output-type: console,file
+    package-level:
+      com.yinhai: DEBUG
+      org.springframework.boot: INFO
+    appender-type:
+      file:
+        fileNamePattern: /ta404/log/file_%d{yyyy-MM-dd}_%i.log  # 文件地址
+        maxHistory: 30    # 文件最大保留天数
+        maxFileSize: 1024mb    # 单个文件最大容量(单位可以是kb,mb,gb)
+        clearSize: 12g    # 所有文件最大容量(单位可以是kb,mb,g
+  modules:
+    cache:
+      register: false
+      # TODO 配置 Redis 地址， 并将 redis cache 配置文件(application-redis.yml)在 application.yml 的 spring.profiles.active 节点引入
+      mode: redis
+    refresh-mapper-xml:
+      enabled: false # 发布关闭 refresh xml
+  component:
+    security:
+      # 发布时 需要配置密码错误锁定策略
+      password-policy-list:
+        # 可以实现自动进行按大小排序,但是errorNum不能设置为一样的,可以无限扩展加,只要符合数据,且锁定时间应该跟随次数上升进行递增才对
+        # 如果输错6次,就会将账号锁定2分钟才会进行解锁
+        - errorNum: 6
+          lockTime:
+          # 2分钟内如果输错4次,就会锁定账号一分钟
+        - errorNum: 4
+          lockTime: 1 #锁定一分钟
+          timeInterval: 2
+        - errorNum: 8
+          lockTime: -1
+      permit-urls:
+        #TODO 这里添加项目需要的 “不需登录即可访问的地址”
+      login-permit-urls:
+        #TODO 这里添加项目需要的 “登录即可访问的地址”
+    examine:
+      examine-switch: true
+
+
+
+
+
+

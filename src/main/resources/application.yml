@@ -1,0 +1,25 @@
+ta404:
+  application:
+    name: ta404
+    version: 5.1.1.RELEASE
+spring:
+  profiles:
+    active: dev,mybatis,cas,token
+  application:
+    name: ${ta404.application.name}
+  main:
+    allow-bean-definition-overriding: true
+  banner:
+    location: banner.txt
+  output:
+    ansi:
+      enabled: always
+  servlet:
+    multipart:
+      max-file-size: 20MB
+server:
+  port: 8881
+  servlet:
+    session:
+      timeout: 7200s
+    context-path: /ta404

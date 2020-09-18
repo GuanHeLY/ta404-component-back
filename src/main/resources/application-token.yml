@@ -1,0 +1,71 @@
+ta404:
+  component:
+    security:
+      token:
+        # 最大并发连接数， -1 为不限制
+        max-connections: -1
+        # 同一账号允许最多登录数，-1为不限制
+        max-single-account-connections: -1
+        # 当同一账号允许登录数达上线时，是否覆盖之前的登录状态(之前的登录者退出)
+        cover-connection: true
+        # 每次访问是否刷新 token失效时间
+        autoRefreshTokenExpiryTime: true
+        # token生成方式
+        processor: jwt
+        # refreshToken 名称,用于读取和对外返回
+        refreshTokenName: TA-RJTOKEN
+        # accessToken 名称,用于读取和对外返回
+        accessTokenName: TA-JTOKEN
+        # 根据refreshToken刷新accessToken,请求地址
+        tokenRefreshUrl: /refresh/token
+        # accessToken过期时间
+        accessTokenExpiryTime: 3600000
+        # refreshToken过期时间
+        refresh-token-expiry-time: 7200000
+        # 是否开启token用redis配置
+        openRedis: false
+        # token存储位置,可选inMemory(本地Map)和redis(redis服务器)
+        store: inMemory  # inMemory redis
+        redis:
+          # redis类型,可选single/cluster
+          type: single # single,cluster
+          # redis的连接池配置
+          pool:
+            #连接池的最大数据库连接数，默认 100
+            maxTotal: 100
+            #最大空闲连接数，默认 20
+            maxIdle: 20
+            #最小空闲连接数，默认 0
+            minIdle: 10
+            #连接耗尽时是否阻塞, false报异常,ture阻塞直到超时, 默认true
+            blockWhenExhausted: true
+            #最大建立连接等待时间
+            maxWaitMillis: 3000
+            #是否在从池中取出连接实例前进行检验,如果检验失败,则从池中去除连接并尝试取出另一个
+            testOnBorrow: false
+            #是否在return连接实例给pool前进行检验
+            testOnReturn: false
+            #在空闲时检查有效性, 校验失败会从pool中drop掉 默认true（这一项只有在timeBetweenEvictionRunsMillis大于0时才有意义）
+            testWhileIdle: true
+            #逐出连接的最小空闲时间 默认1800000毫秒(30分钟) ；（这一项只有在timeBetweenEvictionRunsMillis大于0时才有意义）
+            minEvictableIdleTimeMillis: 60000
+            #逐出扫描的时间间隔(毫秒) 如果为负数,则不运行逐出线程, 默认30000
+            timeBetweenEvictionRunsMillis: 30000
+            #每次逐出检查时 逐出的最大数目 如果为负数就是 : 1/abs(n), 默认-1
+            numTestsPerEvictionRun: -1
+          # redis集群配置
+          cluster:
+            # 最大连接数
+            max-redirects: 5
+            cluster-nodes[0]: 127.0.0.1:6379 #master
+            cluster-nodes[1]: 127.0.0.1:6380 #master
+            cluster-nodes[2]: 127.0.0.1:6381 #slave
+            cluster-nodes[3]: 127.0.0.1:6382 #slave
+            cluster-nodes[4]: 127.0.0.1:6383 #slave
+            cluster-nodes[5]: 127.0.0.1:6384 #slave
+          # redis单节点配置
+          single:
+            hostName: 127.0.0.1
+            port: 6379
+
+

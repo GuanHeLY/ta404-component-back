@@ -1,0 +1,15 @@
+ta404:
+  modules:
+    refresh-mapper-xml:
+      enabled: true  # 默认开发模式开启XML 刷新
+    websecurity:
+      url-patter: (.*?)
+    captcha:
+#      是否启用验证码
+      user-check-code: false
+#      验证码类型，可选值：simple/slide
+      check-code-type: simple
+#      当验证码类型为simple时的复杂度，1为最简单，6为最复杂
+      number-check-code-level: 2
+#       当一个人密码错误几次时，登录需要验证码
+      password-validation-error-number: 2

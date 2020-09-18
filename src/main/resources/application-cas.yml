@@ -1,0 +1,15 @@
+ta404:
+  component:
+    cas:
+      #单点登录服务器登录页地址
+      casServerLoginUrl: http://***.***.***.**/casserver/login
+      #单点服务器地址
+      casServerUrlPrefix: http://***.***.***.***/casserver
+      #接入单点应用地址
+      serverName: http://127.0.0.1:8881/ta404/j_spring_cas_security_check
+      #单点服务器退出地址
+      ssoLogoutUrl: http://***.***.***.***/casserver/logout
+      #固定写法，spring security集成cas单点登录地址
+      filterProcessUrl: /j_spring_cas_security_check
+
+

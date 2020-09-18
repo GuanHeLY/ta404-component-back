@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<reportConfig>
+    <config>
+        <name>logConfig</name>
+        <value>runqian/runqianReportLog.properties</value>
+    </config>
+    <config>
+        <name>license</name>
+        <value>runqian/runqianWindowServer.lic</value>
+<!--        <value>runqian/runqianLinuxServer.lic</value>-->
+    </config>
+    <config>
+        <name>reportFileHome</name>
+        <value>runqian/reportFiles</value>
+    </config>
+    <config>
+        <name>semanticsFile</name>
+        <value></value>
+    </config>
+    <config>
+        <name>JNDIPrefix</name>
+        <value></value>
+    </config>
+    <!-- JNDI数据源配置，格式：数据源的JNDI名称,数据库类型[,取数时是否需要转换编码,数据库字符集编码,显示报表时的字符集编码][,SQL是否需要转码];[重复]……
+    -->
+    <!--    <config>
+          <name>dataSource</name>
+          <value>jdbcname,oracle;</value>
+        </config>-->
+
+    <config>
+        <name>jspCharset</name>
+        <value>UTF-8</value>
+    </config>
+    <config>
+        <name>alwaysReloadDefine</name>
+        <value>yes</value>
+    </config>
+    <config>
+        <name>cachedParamsTimeout</name>
+        <value>10</value>
+    </config>
+    <config>
+        <name>cachedReportDir</name>
+        <value>../work/report/cached</value>
+    </config>
+    <config>
+        <name>cachedIdPrefix</name>
+        <value>A</value>
+    </config>
+    <config>
+        <name>cachedReportTimeout</name>
+        <value>10</value>
+    </config>
+    <config>
+        <name>maxCellNum</name>
+        <value>100000</value>
+    </config>
+    <config>
+        <name>maxConcurrentForReport</name>
+        <value>10</value>
+    </config>
+    <config>
+        <name>maxWaitForReport</name>
+        <value>10</value>
+    </config>
+    <config>
+        <name>maxWaitTimeForReport</name>
+        <value>30</value>
+    </config>
+    <config>
+        <name>errorPage</name>
+        <value>/myErrorPage.jsp</value>
+    </config>
+
+    <jdbc-ds-configs>
+        <!--<jdbc-ds-config>
+            <name>oracle</name>
+            <db-type>oracle</db-type>
+            <connection-url>jdbc:oracle:thin:@//192.168.17.135:1521/pdb1</connection-url>
+            <driver-class>oracle.jdbc.driver.OracleDriver</driver-class>
+            <user-name>ta404</user-name>
+            <password>ta404</password>
+            <db-charset>GBK</db-charset>
+            <client-charset>GBK</client-charset>
+            <extend-properties></extend-properties>
+        </jdbc-ds-config>-->
+    </jdbc-ds-configs>
+
+
+</reportConfig>

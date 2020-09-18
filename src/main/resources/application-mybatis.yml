@@ -1,0 +1,31 @@
+ta404:
+  database:
+    mybatis:
+      datasourceList: ta404ds
+      ta404ds:
+        datasourceType: druid #druid, weblogicJndi, tomcatJndi
+        page-dialect: mysql  #分页方言oracle,mysql,postgresql,sqlserver,informix,dm
+        url: jdbc:mysql://127.0.0.1:3306/ta404-component?serverTimezone=UTC&useUnicode=true&characterEncoding=UTF-8
+        username: root
+        password: guanhe
+        driverClassName: com.mysql.jdbc.Driver
+#        datasourceType: druid #druid, weblogicJndi, tomcatJndi
+#        page-dialect: postgresql  #分页方言oracle,mysql,postgresql,sqlserver,informix,dm
+#        url: jdbc:postgresql://114.116.130.110:5432/ta404
+#        username: ta404
+#        password: ta404
+#        driverClassName: org.postgresql.Driver
+        minIdle: 5
+        mappers:
+          - com.yinhai.ta404.module.mybatis.mapper
+          - com.yinhai.ta404.module.**.mapper.read
+          - com.yinhai.ta404.module.**.mapper.write
+          - com.yinhai.ta404.component.**.mapper.read
+          - com.yinhai.ta404.component.**.mapper.write
+        type-aliases-package:
+          - com.yinhai.ta404.component.**.entity
+        mapper-locations:
+          - classpath*:mapper/read/*.xml
+          - classpath*:mapper/write/*.xml
+        transaction: #用于扩展事务管理器属性
+          enforceReadOnly: false #表示DataSourceTrasactionManager支持只读事务，某些数据库不支持此属性，需要关闭(MySQL 需要设置为false)

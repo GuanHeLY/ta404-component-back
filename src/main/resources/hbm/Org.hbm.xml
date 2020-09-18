@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.yinhai.ta404.module.hibernate.entity.OrgPo" table="TAORG" dynamic-update="true" ><!-- discriminator-value="0" -->
+        <id name="orgid" type="java.lang.String">
+            <column name="ORGID" length="36" />
+        </id>
+
+        <property name="orgname" type="java.lang.String">
+            <column name="ORGNAME" length="60" not-null="true" />
+        </property>
+        <property name="porgid" type="java.lang.String"> 
+             <column name="parentid" length="36"/>
+        </property>
+        <property name="orgidpath" type="java.lang.String">
+            <column name="idpath" length="1024" />
+        </property>
+        <property name="orgnamepath" type="java.lang.String">
+            <column name="namepath" length="1024" />
+        </property>
+        <property name="costomnopath" type="java.lang.String">
+            <column name="CUSTOMNO" length="1024" />
+        </property>
+        <property name="orgtype" type="java.lang.String">
+            <column name="ORGTYPE" length="2" not-null="true" />
+        </property>
+        <property name="sort" type="java.lang.Integer">
+            <column name="orderno" length="8" />
+        </property>
+        <property name="effective" type="java.lang.String">
+            <column name="EFFECTIVE" length="1" />
+        </property> 
+        <property name="orglevel" type="java.lang.String">
+            <column name="ORGLEVEL" length="1"  precision="10" scale="0"/>
+        </property>
+        <property name="orgmanager" type="java.lang.String">
+            <column name="ORGMANAGER" precision="10" scale="0"/>
+        </property>
+        <property name="destory" type="java.lang.String">
+            <column name="DESTORY" length="1" />
+        </property>
+    </class>
+</hibernate-mapping>
